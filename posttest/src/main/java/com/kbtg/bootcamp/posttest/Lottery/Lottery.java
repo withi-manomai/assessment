@@ -1,7 +1,6 @@
 package com.kbtg.bootcamp.posttest.Lottery;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="lottery")

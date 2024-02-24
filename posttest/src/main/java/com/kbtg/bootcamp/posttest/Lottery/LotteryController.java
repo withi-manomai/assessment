@@ -1,5 +1,6 @@
 package com.kbtg.bootcamp.posttest.Lottery;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class LotteryController {
         return this.lotteryService.getLotteryList();
     }
     @PostMapping("/admin/lotteries")
-    public LotteryTicketResponseDto addLottery(@RequestBody LotteryRequestDto lotteryRequestDto) throws Exception{
+    public LotteryTicketResponseDto addLottery(@Valid @RequestBody LotteryRequestDto lotteryRequestDto) throws Exception{
         return this.lotteryService.addLottery(lotteryRequestDto);
     }
 

@@ -18,14 +18,23 @@ public class LotteryService {
     }
 
     public LotteryTicketResponseDto addLottery(LotteryRequestDto lotteryRequestDto) throws Exception {
-        Lottery lottery = new Lottery();
-        lottery.setTicket(lotteryRequestDto.getTicket());
-        lottery.setPrice(lotteryRequestDto.getPrice());
-        lottery.setAmount(lotteryRequestDto.getAmount());
-        lotteryRepository.save(lottery);
-        String ticket = lotteryRequestDto.getTicket();
-        LotteryTicketResponseDto ticketResponseDto = new LotteryTicketResponseDto();
-        ticketResponseDto.setTicket(ticket);
-        return ticketResponseDto;
+        Lottery stockLottery = lotteryRepository.findFirstByTicket(lotteryRequestDto.getTicket());
+        String ticket;
+        if(stockLottery==null) {
+            Lottery lottery = new Lottery();
+            lottery.setTicket(lotteryRequestDto.getTicket());
+            lottery.setPrice(lotteryRequestDto.getPrice());
+            lottery.setAmount(lotteryRequestDto.getAmount());
+            lotteryRepository.save(lottery);
+            ticket = lotteryRequestDto.getTicket();
+        }else {
+            stockLottery.setAmount(stockLottery.getAmount()+lotteryRequestDto.getAmount());
+            lotteryRepository.save(stockLottery);
+            ticket = stockLottery.getTicket();
+
+        }
+        LotteryTicketResponseDto lotteryTicketResponseDto = new LotteryTicketResponseDto();
+        lotteryTicketResponseDto.setTicket(ticket);
+        return lotteryTicketResponseDto;
     }
 }

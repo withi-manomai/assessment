@@ -1,5 +1,6 @@
 package com.kbtg.bootcamp.posttest.UserTicket;
 
+import jakarta.validation.constraints.Size;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,16 +20,31 @@ public class UserTicketController {
     }
 
     @PostMapping("/users/{userId}/lotteries/{ticket}")
-    public UserTicketIdResponseDto buyTicket(@PathVariable String userId,@PathVariable String ticket){
+    public UserTicketIdResponseDto buyTicket
+            (@PathVariable
+             @Size(min = 10, max = 10, message = "UserId should be a 10-digit number")
+             String userId
+            ,@PathVariable
+             @Size(min =6,max = 6,message = "Ticket should be a 6-digit number")
+             String ticket) throws Exception{
         return this.userService.buyTicket(userId, ticket);
     }
 
     @GetMapping("/users/{userId}/lotteries")
-    public UserTicketBoughtListResponseDto getUserBoughtTicketList(@PathVariable String userId){
+    public UserTicketBoughtListResponseDto getUserBoughtTicketList
+            (@PathVariable
+             @Size(min = 10, max = 10, message = "UserId should be a 10-digit number")
+             String userId)throws Exception{
         return this.userService.getUserBoughtTicketList(userId);
     }
     @DeleteMapping("/users/{userId}/lotteries/{ticket}")
-    public UserTicketResponseDto sellTicket(@PathVariable String userId,@PathVariable String ticket){
+    public UserTicketResponseDto sellTicket
+            (@PathVariable
+             @Size(min = 10, max = 10, message = "UserId should be a 10-digit number")
+             String userId
+             ,@PathVariable
+             @Size(min =6,max = 6,message = "Ticket should be a 6-digit number")
+             String ticket){
         return this.userService.sellTicket(userId,ticket);
     }
 

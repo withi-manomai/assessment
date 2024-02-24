@@ -22,9 +22,11 @@ public class UserTicketService {
 
     public UserTicketIdResponseDto buyTicket(String userId, String ticket) {
         Lottery stockLottery = lotteryRepository.findFirstByTicket(ticket);
+        //       show stockLottery
         //       System.out.println(stockLottery.toString());
         UserTicket existingUserTicket = userTicketRepository.findFirstByUserIdAndTicket(userId, ticket);
-        //        System.out.println(exitingTicket.toString());
+        //       show existingUserTicket
+        //       System.out.println(existingTicket.toString());
         Long returnId = null;
         if(stockLottery!=null && stockLottery.getAmount()>0) {
             if (existingUserTicket == null) {
@@ -33,8 +35,7 @@ public class UserTicketService {
                 userTicket.setTicket(ticket);
                 userTicket.setAmount(1);
                 UserTicket saveUserTicket = userTicketRepository.save(userTicket);
-                Long generatedId = saveUserTicket.getId();
-                returnId = generatedId;
+                returnId = saveUserTicket.getId();
             } else {
                 existingUserTicket.setAmount(existingUserTicket.getAmount() + 1);
                 userTicketRepository.save(existingUserTicket);
@@ -58,13 +59,11 @@ public class UserTicketService {
             cost += userBoughtTicketList.get(i).getAmount()*userBoughtTicketList.get(i).getLottery().getPrice();
             count += userBoughtTicketList.get(i).getAmount();
         }
-        System.out.println(Arrays.toString(boughtTicketList));
-        System.out.println(count.toString());
-        System.out.println(cost.toString());
-        UserTicketBoughtListResponseDto userBoughtTicketListResponseDto
-                = new UserTicketBoughtListResponseDto(boughtTicketList,count,cost);
-
-        return userBoughtTicketListResponseDto;
+//        show boughtTicketList,count and cost
+//        System.out.println(Arrays.toString(boughtTicketList));
+//        System.out.println(count.toString());
+//        System.out.println(cost.toString());
+        return new UserTicketBoughtListResponseDto(boughtTicketList,count,cost);
     }
 
     public UserTicketResponseDto sellTicket(String userId, String ticket) {
