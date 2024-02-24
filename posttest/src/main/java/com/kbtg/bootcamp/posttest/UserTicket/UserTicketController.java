@@ -1,15 +1,15 @@
-package com.kbtg.bootcamp.posttest.User;
+package com.kbtg.bootcamp.posttest.UserTicket;
 
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class UserController {
+public class UserTicketController {
 
-    private final UserService userService;
+    private final UserTicketService userService;
 
-    public UserController(UserService userService) {
+    public UserTicketController(UserTicketService userService) {
         this.userService = userService;
     }
 
@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}/lotteries")
-    public UserBoughtTicketListResponseDto getUserBoughtTicketList(@PathVariable String userId){
+    public UserTicketBoughtListResponseDto getUserBoughtTicketList(@PathVariable String userId){
         return this.userService.getUserBoughtTicketList(userId);
     }
     @DeleteMapping("/users/{userId}/lotteries/{ticket}")

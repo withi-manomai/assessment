@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.User;
+package com.kbtg.bootcamp.posttest.UserTicket;
 
 import com.kbtg.bootcamp.posttest.Lottery.Lottery;
 import com.kbtg.bootcamp.posttest.Lottery.LotteryRepository;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 @Service
-public class UserService {
+public class UserTicketService {
     private final UserTicketRepository userTicketRepository;
     private final LotteryRepository lotteryRepository;
-    public UserService(UserTicketRepository userRepository, LotteryRepository lotteryRepository) {
+    public UserTicketService(UserTicketRepository userRepository, LotteryRepository lotteryRepository) {
         this.userTicketRepository = userRepository;
         this.lotteryRepository = lotteryRepository;
     }
@@ -48,7 +48,7 @@ public class UserService {
         return new UserTicketIdResponseDto(returnId);
     }
 
-    public UserBoughtTicketListResponseDto getUserBoughtTicketList(String userId) {
+    public UserTicketBoughtListResponseDto getUserBoughtTicketList(String userId) {
         List<UserTicket> userBoughtTicketList= userTicketRepository.findAllByUserId(userId);
         String[] boughtTicketList = new String[userBoughtTicketList.size()];
         Integer cost = 0;
@@ -61,8 +61,8 @@ public class UserService {
         System.out.println(Arrays.toString(boughtTicketList));
         System.out.println(count.toString());
         System.out.println(cost.toString());
-        UserBoughtTicketListResponseDto userBoughtTicketListResponseDto
-                = new UserBoughtTicketListResponseDto(boughtTicketList,count,cost);
+        UserTicketBoughtListResponseDto userBoughtTicketListResponseDto
+                = new UserTicketBoughtListResponseDto(boughtTicketList,count,cost);
 
         return userBoughtTicketListResponseDto;
     }

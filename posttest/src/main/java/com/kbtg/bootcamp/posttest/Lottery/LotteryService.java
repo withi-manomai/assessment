@@ -12,19 +12,19 @@ public class LotteryService {
         this.lotteryRepository = lotteryRepository;
     }
 
-    public TicketListResponseDto getLotteryList() {
+    public LotteryTicketListResponseDto getLotteryList() {
         List<String> tickets = lotteryRepository.findAllTickets();
-        return new TicketListResponseDto(tickets);
+        return new LotteryTicketListResponseDto(tickets);
     }
 
-    public TicketResponseDto addLottery(LotteryRequestDto lotteryRequestDto) throws Exception {
+    public LotteryTicketResponseDto addLottery(LotteryRequestDto lotteryRequestDto) throws Exception {
         Lottery lottery = new Lottery();
         lottery.setTicket(lotteryRequestDto.getTicket());
         lottery.setPrice(lotteryRequestDto.getPrice());
         lottery.setAmount(lotteryRequestDto.getAmount());
         lotteryRepository.save(lottery);
         String ticket = lotteryRequestDto.getTicket();
-        TicketResponseDto ticketResponseDto = new TicketResponseDto();
+        LotteryTicketResponseDto ticketResponseDto = new LotteryTicketResponseDto();
         ticketResponseDto.setTicket(ticket);
         return ticketResponseDto;
     }

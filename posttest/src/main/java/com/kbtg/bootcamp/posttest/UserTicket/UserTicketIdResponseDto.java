@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.User;
+package com.kbtg.bootcamp.posttest.UserTicket;
 
 public class UserTicketIdResponseDto {
     private Long id;

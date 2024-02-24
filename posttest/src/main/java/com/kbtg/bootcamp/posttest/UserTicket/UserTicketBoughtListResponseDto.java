@@ -1,11 +1,11 @@
-package com.kbtg.bootcamp.posttest.User;
+package com.kbtg.bootcamp.posttest.UserTicket;
 
-public class UserBoughtTicketListResponseDto {
+public class UserTicketBoughtListResponseDto {
     private String[] tickets;
     private Integer count;
     private Integer cost;
 
-    public UserBoughtTicketListResponseDto(String[] tickets, Integer count, Integer cost) {
+    public UserTicketBoughtListResponseDto(String[] tickets, Integer count, Integer cost) {
         this.tickets = tickets;
         this.count = count;
         this.cost = cost;

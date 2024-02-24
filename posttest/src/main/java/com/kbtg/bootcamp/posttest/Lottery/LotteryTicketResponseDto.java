@@ -1,11 +1,7 @@
-package com.kbtg.bootcamp.posttest.User;
+package com.kbtg.bootcamp.posttest.Lottery;
 
-public class UserTicketResponseDto {
+public class LotteryTicketResponseDto {
     private String ticket;
-
-    public UserTicketResponseDto(String ticket) {
-        this.ticket = ticket;
-    }
 
     public String getTicket() {
         return ticket;

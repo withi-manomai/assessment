@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.User;
+package com.kbtg.bootcamp.posttest.UserTicket;
 
 import com.kbtg.bootcamp.posttest.Lottery.Lottery;
 import jakarta.persistence.*;

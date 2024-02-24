@@ -2,10 +2,10 @@ package com.kbtg.bootcamp.posttest.Lottery;
 
 import java.util.List;
 
-public class TicketListResponseDto {
+public class LotteryTicketListResponseDto {
     public List<String> tickets;
 
-    public TicketListResponseDto(List<String> tickets) {
+    public LotteryTicketListResponseDto(List<String> tickets) {
         this.tickets = tickets;
     }
 

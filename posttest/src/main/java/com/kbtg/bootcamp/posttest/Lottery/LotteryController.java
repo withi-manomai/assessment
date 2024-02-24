@@ -14,11 +14,11 @@ public class LotteryController {
     }
 
     @GetMapping("/lotteries")
-    public TicketListResponseDto getLotteryList(){
+    public LotteryTicketListResponseDto getLotteryList(){
         return this.lotteryService.getLotteryList();
     }
     @PostMapping("/admin/lotteries")
-    public TicketResponseDto addLottery(@RequestBody LotteryRequestDto lotteryRequestDto) throws Exception{
+    public LotteryTicketResponseDto addLottery(@RequestBody LotteryRequestDto lotteryRequestDto) throws Exception{
         return this.lotteryService.addLottery(lotteryRequestDto);
     }
 
