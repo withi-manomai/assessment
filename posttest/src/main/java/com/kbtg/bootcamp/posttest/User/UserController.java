@@ -27,5 +27,9 @@ public class UserController {
     public UserBoughtTicketListResponseDto getUserBoughtTicketList(@PathVariable String userId){
         return this.userService.getUserBoughtTicketList(userId);
     }
+    @DeleteMapping("/users/{userId}/lotteries/{ticket}")
+    public UserTicketResponseDto sellTicket(@PathVariable String userId,@PathVariable String ticket){
+        return this.userService.sellTicket(userId,ticket);
+    }
 
 }

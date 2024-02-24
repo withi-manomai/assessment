@@ -66,4 +66,10 @@ public class UserService {
 
         return userBoughtTicketListResponseDto;
     }
+
+    public UserTicketResponseDto sellTicket(String userId, String ticket) {
+        Long Id = userTicketRepository.findFirstByUserIdAndTicket(userId,ticket).getId();
+        userTicketRepository.deleteById(Id);
+        return new UserTicketResponseDto(ticket);
+    }
 }
