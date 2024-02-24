@@ -4,6 +4,7 @@ import com.kbtg.bootcamp.posttest.Lottery.Lottery;
 import com.kbtg.bootcamp.posttest.Lottery.LotteryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 @Service
 public class UserService {
@@ -45,5 +46,24 @@ public class UserService {
 
         }
         return new UserTicketIdResponseDto(returnId);
+    }
+
+    public UserBoughtTicketListResponseDto getUserBoughtTicketList(String userId) {
+        List<UserTicket> userBoughtTicketList= userTicketRepository.findAllByUserId(userId);
+        String[] boughtTicketList = new String[userBoughtTicketList.size()];
+        Integer cost = 0;
+        Integer count = 0;
+        for (int i = 0; i < userBoughtTicketList.size(); i++) {
+            boughtTicketList[i] = userBoughtTicketList.get(i).getTicket();
+            cost += userBoughtTicketList.get(i).getAmount()*userBoughtTicketList.get(i).getLottery().getPrice();
+            count += userBoughtTicketList.get(i).getAmount();
+        }
+        System.out.println(Arrays.toString(boughtTicketList));
+        System.out.println(count.toString());
+        System.out.println(cost.toString());
+        UserBoughtTicketListResponseDto userBoughtTicketListResponseDto
+                = new UserBoughtTicketListResponseDto(boughtTicketList,count,cost);
+
+        return userBoughtTicketListResponseDto;
     }
 }

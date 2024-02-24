@@ -1,5 +1,6 @@
 package com.kbtg.bootcamp.posttest.Lottery;
 
+import com.kbtg.bootcamp.posttest.User.UserTicket;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

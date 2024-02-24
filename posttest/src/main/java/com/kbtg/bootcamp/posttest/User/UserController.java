@@ -23,4 +23,9 @@ public class UserController {
         return this.userService.buyTicket(userId, ticket);
     }
 
+    @GetMapping("/users/{userId}/lotteries")
+    public UserBoughtTicketListResponseDto getUserBoughtTicketList(@PathVariable String userId){
+        return this.userService.getUserBoughtTicketList(userId);
+    }
+
 }

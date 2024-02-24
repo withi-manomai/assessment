@@ -1,5 +1,6 @@
 package com.kbtg.bootcamp.posttest.User;
 
+import com.kbtg.bootcamp.posttest.Lottery.Lottery;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,9 +15,20 @@ public class UserTicket {
     private String ticket;
     @Column(name = "amount")
     private Integer amount;
+    @ManyToOne
+    @JoinColumn(name = "ticket", referencedColumnName = "ticket", insertable = false, updatable = false)
+    private Lottery lottery;
 
     public UserTicket() {
 
+    }
+
+    public Lottery getLottery() {
+        return lottery;
+    }
+
+    public void setLottery(Lottery lottery) {
+        this.lottery = lottery;
     }
 
     public Long getId() {
@@ -57,6 +69,7 @@ public class UserTicket {
                 ", userId='" + userId + '\'' +
                 ", ticket='" + ticket + '\'' +
                 ", amount=" + amount +
+                ", lottery=" + (lottery != null ? lottery.toString() : "null") +
                 '}';
     }
 }
