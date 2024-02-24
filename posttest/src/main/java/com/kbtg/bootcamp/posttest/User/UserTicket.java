@@ -1,23 +1,21 @@
-package com.kbtg.bootcamp.posttest.Lottery;
+package com.kbtg.bootcamp.posttest.User;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="lottery")
-public class Lottery {
+@Table(name = "user_ticket")
+public class UserTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "userid")
+    private String userId;
     @Column(name = "ticket")
     private String ticket;
-    @Column(name = "price")
-    private Integer price;
-
     @Column(name = "amount")
     private Integer amount;
 
-    public Lottery() {
+    public UserTicket() {
 
     }
 
@@ -29,20 +27,20 @@ public class Lottery {
         this.id = id;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getTicket() {
         return ticket;
     }
 
     public void setTicket(String ticket) {
         this.ticket = ticket;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
     }
 
     public Integer getAmount() {
@@ -54,11 +52,12 @@ public class Lottery {
     }
     @Override
     public String toString() {
-        return "Lottery {" +
+        return "UserTicket{" +
                 "id=" + id +
-                ", price='" + price + '\'' +
+                ", userId='" + userId + '\'' +
                 ", ticket='" + ticket + '\'' +
                 ", amount=" + amount +
                 '}';
     }
 }
+

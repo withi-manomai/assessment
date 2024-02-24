@@ -1,13 +1,29 @@
-package com.kbtg.bootcamp.posttest.User;
+package com.kbtg.bootcamp.posttest.Lottery;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-public class UserController {
+public class LotteryController {
+    private final LotteryService lotteryService;
 
-    private final List<Lottery> = List.of()
-    public  getLotteries()
+    public LotteryController(LotteryService lotteryService) {
+        this.lotteryService = lotteryService;
+    }
+
+    @GetMapping("/lotteries")
+    public TicketListResponseDto getLotteryList(){
+        return this.lotteryService.getLotteryList();
+    }
+    @PostMapping("/admin/lotteries")
+    public TicketResponseDto addLottery(@RequestBody LotteryRequestDto lotteryRequestDto) throws Exception{
+        return this.lotteryService.addLottery(lotteryRequestDto);
+    }
+
+
 }
+
+
+

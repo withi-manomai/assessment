@@ -10,7 +10,7 @@ CREATE TABLE lottery (
 CREATE TABLE user_ticket (
                          id SERIAL PRIMARY KEY,
                          userID VARCHAR(255) NOT NULL ,
-                         ticket VARCHAR(255) REFERENCES lottery(ticket),
+                         ticket VARCHAR(255) ,--REFERENCES, --lottery(ticket),
                          amount INTEGER NOT NULL
 );
 
