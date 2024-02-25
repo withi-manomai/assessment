@@ -1,6 +1,7 @@
 package com.kbtg.bootcamp.posttest.UserTicket;
 
 import jakarta.validation.constraints.Size;
+import org.apache.coyote.BadRequestException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class UserTicketController {
              String userId
              ,@PathVariable
              @Size(min =6,max = 6,message = "Ticket should be a 6-digit number")
-             String ticket){
+             String ticket) throws BadRequestException {
         return this.userService.sellTicket(userId,ticket);
     }
 

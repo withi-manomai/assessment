@@ -2,6 +2,8 @@ package com.kbtg.bootcamp.posttest.UserTicket;
 
 import com.kbtg.bootcamp.posttest.Lottery.Lottery;
 import com.kbtg.bootcamp.posttest.Lottery.LotteryRepository;
+import jakarta.transaction.Transactional;
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -20,7 +22,8 @@ public class UserTicketService {
         return userTicketRepository.findAll();
     }
 
-    public UserTicketIdResponseDto buyTicket(String userId, String ticket) {
+    @Transactional
+    public UserTicketIdResponseDto buyTicket(String userId, String ticket) throws BadRequestException {
         Lottery stockLottery = lotteryRepository.findFirstByTicket(ticket);
         //       show stockLottery
         //       System.out.println(stockLottery.toString());
@@ -46,6 +49,7 @@ public class UserTicketService {
                 lotteryRepository.save(stockLottery);
 
         }
+        else throw new BadRequestException("out of stock");
         return new UserTicketIdResponseDto(returnId);
     }
 
@@ -66,9 +70,13 @@ public class UserTicketService {
         return new UserTicketBoughtListResponseDto(boughtTicketList,count,cost);
     }
 
-    public UserTicketResponseDto sellTicket(String userId, String ticket) {
-        Long Id = userTicketRepository.findFirstByUserIdAndTicket(userId,ticket).getId();
-        userTicketRepository.deleteById(Id);
+    public UserTicketResponseDto sellTicket(String userId, String ticket) throws BadRequestException {
+        try {
+            Long Id = userTicketRepository.findFirstByUserIdAndTicket(userId, ticket).getId();
+            userTicketRepository.deleteById(Id);
+        } catch (NullPointerException ex) {
+            throw new BadRequestException("Ticket not found");
+        }
         return new UserTicketResponseDto(ticket);
     }
 }

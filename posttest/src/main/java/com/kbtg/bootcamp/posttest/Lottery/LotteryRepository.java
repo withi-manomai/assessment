@@ -12,8 +12,8 @@ public interface LotteryRepository extends JpaRepository<Lottery,Long> {
     @Query("SELECT lt FROM Lottery lt WHERE lt.ticket = :ticket")
     Lottery findFirstByTicket(@Param("ticket") String ticket);
 
-    @Query("SELECT ticket FROM Lottery")
-    List<String> findAllTickets();
+    @Query("SELECT lt.ticket FROM Lottery lt WHERE lt.amount>0")
+    List<String> findAllTicketsInStock();
 
 
 }

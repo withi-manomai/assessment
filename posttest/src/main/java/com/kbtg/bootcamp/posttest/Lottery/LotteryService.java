@@ -13,7 +13,7 @@ public class LotteryService {
     }
 
     public LotteryTicketListResponseDto getLotteryList() {
-        List<String> tickets = lotteryRepository.findAllTickets();
+        List<String> tickets = lotteryRepository.findAllTicketsInStock();
         return new LotteryTicketListResponseDto(tickets);
     }
 
