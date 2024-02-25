@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.Lottery;
+package com.kbtg.bootcamp.posttest.LotteryTest;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;

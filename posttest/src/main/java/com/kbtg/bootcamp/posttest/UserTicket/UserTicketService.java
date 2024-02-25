@@ -1,12 +1,11 @@
 package com.kbtg.bootcamp.posttest.UserTicket;
 
-import com.kbtg.bootcamp.posttest.Lottery.Lottery;
-import com.kbtg.bootcamp.posttest.Lottery.LotteryRepository;
+import com.kbtg.bootcamp.posttest.LotteryTest.Lottery;
+import com.kbtg.bootcamp.posttest.LotteryTest.LotteryRepository;
 import jakarta.transaction.Transactional;
 import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 @Service
 public class UserTicketService {

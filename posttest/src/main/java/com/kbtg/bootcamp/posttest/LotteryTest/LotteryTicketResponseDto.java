@@ -1,7 +1,14 @@
-package com.kbtg.bootcamp.posttest.Lottery;
+package com.kbtg.bootcamp.posttest.LotteryTest;
 
 public class LotteryTicketResponseDto {
     private String ticket;
+
+    public LotteryTicketResponseDto() {
+
+    }
+    public LotteryTicketResponseDto(String ticket) {
+        this.ticket = ticket;
+    }
 
     public String getTicket() {
         return ticket;

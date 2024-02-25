@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.Lottery;
+package com.kbtg.bootcamp.posttest.LotteryTest;
 
 
 import jakarta.validation.constraints.Min;
@@ -10,7 +10,7 @@ public class LotteryRequestDto{
     @Size(min=6,max=6,message = "the number digits of ticket should be 6 digit")
     private String ticket;
     @NotNull
-    @Min(value = 1,message = "Price must be greater than 0")
+    @Min(value = 0,message = "Price must be greater than 0")
     private Integer price;
     @NotNull
     @Min(value=1,message = "The amount must greater than 0")
@@ -18,6 +18,12 @@ public class LotteryRequestDto{
 
     public LotteryRequestDto() {
 
+    }
+
+    public LotteryRequestDto(String ticket, Integer price, Integer amount) {
+        this.ticket = ticket;
+        this.price = price;
+        this.amount = amount;
     }
 
     public String getTicket() {

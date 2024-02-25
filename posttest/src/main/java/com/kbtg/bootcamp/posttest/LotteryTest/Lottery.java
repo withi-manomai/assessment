@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.Lottery;
+package com.kbtg.bootcamp.posttest.LotteryTest;
 
 import jakarta.persistence.*;
 
@@ -18,6 +18,13 @@ public class Lottery {
 
     public Lottery() {
 
+    }
+
+    public Lottery(Long id, String ticket, Integer price, Integer amount) {
+        this.id = id;
+        this.ticket = ticket;
+        this.price = price;
+        this.amount = amount;
     }
 
     public Long getId() {
