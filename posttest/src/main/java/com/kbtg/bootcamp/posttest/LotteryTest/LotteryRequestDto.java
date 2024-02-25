@@ -13,7 +13,7 @@ public class LotteryRequestDto{
     @Min(value = 0,message = "Price must be greater than 0")
     private Integer price;
     @NotNull
-    @Min(value=1,message = "The amount must greater than 0")
+    @Min(value=0,message = "The amount must greater than 0")
     private Integer amount;
 
     public LotteryRequestDto() {

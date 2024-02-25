@@ -25,7 +25,7 @@ class LotteryServiceTest {
     }
 
     @Test
-    @DisplayName("getLotteryList : should return ticket : [000111,000222,000333]")
+    @DisplayName("getLotteryList ; return ticket : [000111,000222,000333]")
     void getLotteryList() throws Exception{
         List<String> lotteries = new ArrayList<>(List.of("000111","000222","000333"));
         when(lotteryRepository.findAllTicketsInStock()).thenReturn(lotteries);
@@ -37,7 +37,7 @@ class LotteryServiceTest {
     }
 
     @Test
-    @DisplayName("addLottery : The ticket has stock amount of 0 tickets; should return ticket : [000111]")
+    @DisplayName("addLottery ; The ticket has stock amount of 0 tickets ; return ticket : [000111]")
     void addLotteryAmountInStockEqualsZero() throws Exception{
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000111",80,5);
         when(lotteryRepository.findFirstByTicket(any())).thenReturn(null);
@@ -50,7 +50,7 @@ class LotteryServiceTest {
     }
 
     @Test
-    @DisplayName("addLottery: The ticket has a stock amount greater than 0; should return ticket: [000111]")
+    @DisplayName("addLottery ; The ticket has a stock amount greater than 0 ; return ticket: [000111]")
     void addLotteryAmountInStockMoreThanZero() throws Exception{
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000111",80,5);
         Lottery stockLottery = new Lottery(1L,"000111",80,1);
@@ -62,4 +62,5 @@ class LotteryServiceTest {
 
         assertEquals(expected.getTicket(),actual.getTicket());
     }
+
 }
