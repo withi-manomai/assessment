@@ -15,10 +15,10 @@ public class UserTicketController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
-    public List<UserTicket> getUserTicketList(){
-        return this.userService.getUserList();
-    }
+//    @GetMapping("/users")
+//    public List<UserTicket> getUserTicketList(){
+//        return this.userService.getUserList();
+//    }
 
     @PostMapping("/users/{userId}/lotteries/{ticket}")
     public UserTicketIdResponseDto buyTicket
@@ -48,5 +48,6 @@ public class UserTicketController {
              String ticket) throws BadRequestException {
         return this.userService.sellTicket(userId,ticket);
     }
+
 
 }

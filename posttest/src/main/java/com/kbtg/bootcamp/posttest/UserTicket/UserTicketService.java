@@ -17,9 +17,9 @@ public class UserTicketService {
     }
 
 
-    public List<UserTicket> getUserList() {
-        return userTicketRepository.findAll();
-    }
+//    public List<UserTicket> getUserList() {
+//        return userTicketRepository.findAll();
+//    }
 
     @Transactional
     public UserTicketIdResponseDto buyTicket(String userId, String ticket) throws BadRequestException {

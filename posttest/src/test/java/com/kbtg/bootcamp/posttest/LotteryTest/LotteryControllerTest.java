@@ -1,6 +1,5 @@
 package com.kbtg.bootcamp.posttest.LotteryTest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,7 +37,8 @@ class LotteryControllerTest {
     @Test
     @DisplayName("GET: /lotteries ; return tickets: [000111,000222,000333]")
     void getLotteryList() throws Exception {
-        List<String> lotteries = new ArrayList<>(List.of("000111", "000222", "000333"));
+        List<String> tickets = List.of("000111", "000222", "000333");
+        List<String> lotteries = new ArrayList<>(tickets);
         LotteryTicketListResponseDto lotteryTicketListResponseDto = new LotteryTicketListResponseDto(lotteries);
 
         when(lotteryService.getLotteryList()).thenReturn(lotteryTicketListResponseDto);
@@ -49,7 +49,7 @@ class LotteryControllerTest {
     }
 
     @Test
-    @DisplayName("POST: /admin/lotteries ; normal lottery request, digit = 6 ; return ticket : 000111")
+    @DisplayName("POST: /admin/lotteries ; correct lottery ; return ticket : 000111")
     void addLottery() throws Exception {
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000111",80,5);
         String ticketJson = "{\"ticket\":\"000111\",\"price\":80,\"amount\":5}";
@@ -67,8 +67,8 @@ class LotteryControllerTest {
                 .andExpect(status().isOk());
     }
     @Test
-    @DisplayName("POST: /admin/lotteries ; bad lottery request, digit > 6 ; throw BadRequestException")
-    void addBadLotteryRequestDigitMoreThanSix() throws Exception {
+    @DisplayName("POST: /admin/lotteries ; lottery > 6 digit ; throw BadRequestException")
+    void addLotteryBadRequestDigitMoreThanSix() throws Exception {
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("0001111",80,5);
         String ticketRequestJson = "{\"ticket\":\"0001111\",\"price\":80,\"amount\":5}";
 
@@ -85,8 +85,8 @@ class LotteryControllerTest {
     }
 
     @Test
-    @DisplayName("POST: /admin/lotteries ; bad lottery request, digit < 6 ; throw BadRequestException")
-    void addBadLotteryRequestDigitLessThanSix() throws Exception {
+    @DisplayName("POST: /admin/lotteries ; lottery < 6 digit ; throw BadRequestException")
+    void addLotteryBadRequestTicketDigitLessThanSix() throws Exception {
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("00011",80,5);
         String ticketRequestJson = "{\"ticket\":\"00011\",\"price\":80,\"amount\":5}";
 
@@ -103,8 +103,8 @@ class LotteryControllerTest {
     }
 
     @Test
-    @DisplayName("POST: /admin/lotteries ; bad price request, price < 0 ; throw BadRequestException")
-    void addBadPriceRequestPriceLessThanZero() throws Exception {
+    @DisplayName("POST: /admin/lotteries ; price < 0 ; throw BadRequestException")
+    void addLotteryBadRequestPriceLessThanZero() throws Exception {
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000111",-1,5);
         String ticketRequestJson = "{\"ticket\":\"000111\",\"price\":-1,\"amount\":5}";
 
@@ -121,8 +121,8 @@ class LotteryControllerTest {
     }
 
     @Test
-    @DisplayName("POST: /admin/lotteries ; bad amount request, amount < 0 ; throw BadRequestException")
-    void addBadAmountRequestAmountLessThanZero() throws Exception {
+    @DisplayName("POST: /admin/lotteries ; amount < 0 ; throw BadRequestException")
+    void addLotteryBadRequestAmountLessThanZero() throws Exception {
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000111",80,-1);
         String ticketRequestJson = "{\"ticket\":\"000111\",\"price\":80,\"amount\":-1}";
 

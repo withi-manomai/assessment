@@ -11,6 +11,7 @@ public class UserTicketBoughtListResponseDto {
         this.cost = cost;
     }
 
+
     public String[] getTickets() {
         return tickets;
     }

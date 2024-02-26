@@ -27,12 +27,15 @@ class LotteryServiceTest {
     @Test
     @DisplayName("getLotteryList ; return ticket : [000111,000222,000333]")
     void getLotteryList() throws Exception{
-        List<String> lotteries = new ArrayList<>(List.of("000111","000222","000333"));
+        List<String> tickets = List.of("000111", "000222", "000333");
+        List<String> lotteries = new ArrayList<>(tickets);
         when(lotteryRepository.findAllTicketsInStock()).thenReturn(lotteries);
 
         LotteryTicketListResponseDto actual = lotteryService.getLotteryList();
 
-        LotteryTicketListResponseDto expected = new LotteryTicketListResponseDto(List.of("000111","000222","000333"));
+        List<String> expectedTickets = List.of("000111", "000222", "000333");
+        LotteryTicketListResponseDto expected = new LotteryTicketListResponseDto(expectedTickets);
+
         assertArrayEquals(expected.getTickets().toArray(), actual.getTickets().toArray());
     }
 
@@ -44,7 +47,8 @@ class LotteryServiceTest {
 
         LotteryTicketResponseDto actual = lotteryService.addLottery(lotteryRequestDto);
 
-        LotteryTicketResponseDto expected = new LotteryTicketResponseDto("000111");
+        String expectedTicket = "000111";
+        LotteryTicketResponseDto expected = new LotteryTicketResponseDto(expectedTicket);
 
         assertEquals(expected.getTicket(),actual.getTicket());
     }
@@ -58,7 +62,8 @@ class LotteryServiceTest {
 
         LotteryTicketResponseDto actual = lotteryService.addLottery(lotteryRequestDto);
 
-        LotteryTicketResponseDto expected = new LotteryTicketResponseDto("000111");
+        String expectedTicket = "000111";
+        LotteryTicketResponseDto expected = new LotteryTicketResponseDto(expectedTicket);
 
         assertEquals(expected.getTicket(),actual.getTicket());
     }

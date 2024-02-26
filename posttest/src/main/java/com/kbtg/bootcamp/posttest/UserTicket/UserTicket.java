@@ -23,6 +23,14 @@ public class UserTicket {
 
     }
 
+    public UserTicket(Long id, String userId, String ticket, Integer amount, Lottery lottery) {
+        this.id = id;
+        this.userId = userId;
+        this.ticket = ticket;
+        this.amount = amount;
+        this.lottery = lottery;
+    }
+
     public Lottery getLottery() {
         return lottery;
     }
