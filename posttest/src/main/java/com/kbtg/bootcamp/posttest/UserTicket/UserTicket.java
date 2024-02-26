@@ -1,6 +1,6 @@
 package com.kbtg.bootcamp.posttest.UserTicket;
 
-import com.kbtg.bootcamp.posttest.LotteryTest.Lottery;
+import com.kbtg.bootcamp.posttest.Lottery.Lottery;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.LotteryTest;
+package com.kbtg.bootcamp.posttest.Lottery;
 
 
 import jakarta.validation.constraints.Min;

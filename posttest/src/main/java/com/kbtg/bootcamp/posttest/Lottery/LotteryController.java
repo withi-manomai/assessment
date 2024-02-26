@@ -1,6 +1,7 @@
-package com.kbtg.bootcamp.posttest.LotteryTest;
+package com.kbtg.bootcamp.posttest.Lottery;
 
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ public class LotteryController {
         return this.lotteryService.getLotteryList();
     }
     @PostMapping("/admin/lotteries")
+    @PreAuthorize("hasRole('ADMIN')")
     public LotteryTicketResponseDto addLottery(@Valid @RequestBody LotteryRequestDto lotteryRequestDto) throws Exception{
         return this.lotteryService.addLottery(lotteryRequestDto);
     }

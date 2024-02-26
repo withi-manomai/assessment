@@ -1,5 +1,6 @@
 package com.kbtg.bootcamp.posttest.LotteryTest;
 
+import com.kbtg.bootcamp.posttest.Lottery.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 class LotteryServiceTest {

@@ -1,4 +1,4 @@
-package com.kbtg.bootcamp.posttest.LotteryTest;
+package com.kbtg.bootcamp.posttest.Lottery;
 
 public class LotteryTicketResponseDto {
     private String ticket;

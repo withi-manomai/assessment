@@ -1,8 +1,8 @@
 package com.kbtg.bootcamp.posttest.UserTicketTest;
 
-import com.kbtg.bootcamp.posttest.LotteryTest.Lottery;
-import com.kbtg.bootcamp.posttest.LotteryTest.LotteryRepository;
-import com.kbtg.bootcamp.posttest.LotteryTest.LotteryService;
+import com.kbtg.bootcamp.posttest.Lottery.Lottery;
+import com.kbtg.bootcamp.posttest.Lottery.LotteryRepository;
+import com.kbtg.bootcamp.posttest.Lottery.LotteryService;
 import com.kbtg.bootcamp.posttest.UserTicket.*;
 import org.apache.coyote.BadRequestException;
 import org.junit.jupiter.api.BeforeEach;

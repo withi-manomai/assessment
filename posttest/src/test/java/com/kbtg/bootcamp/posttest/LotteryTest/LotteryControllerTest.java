@@ -1,5 +1,6 @@
 package com.kbtg.bootcamp.posttest.LotteryTest;
 
+import com.kbtg.bootcamp.posttest.Lottery.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
