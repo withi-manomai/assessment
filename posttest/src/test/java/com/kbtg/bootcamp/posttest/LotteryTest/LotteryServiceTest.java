@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 class LotteryServiceTest {
@@ -40,14 +41,15 @@ class LotteryServiceTest {
     }
 
     @Test
-    @DisplayName("addLottery ; The ticket has stock amount of 0 tickets ; return ticket : [000111]")
+    @DisplayName("addLottery ; The ticket has stock amount of 0 tickets ; return ticket : [000444]")
     void addLotteryAmountInStockEqualsZero() throws Exception{
-        LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000111",80,5);
+        LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000444",80,5);
         when(lotteryRepository.findFirstByTicket(any())).thenReturn(null);
-
+        Lottery lotterySave = new Lottery(4L,"000444",80,5);
+        when(lotteryRepository.save(any())).thenReturn(lotterySave);
         LotteryTicketResponseDto actual = lotteryService.addLottery(lotteryRequestDto);
 
-        String expectedTicket = "000111";
+        String expectedTicket = "000444";
         LotteryTicketResponseDto expected = new LotteryTicketResponseDto(expectedTicket);
 
         assertEquals(expected.getTicket(),actual.getTicket());
@@ -59,6 +61,8 @@ class LotteryServiceTest {
         LotteryRequestDto lotteryRequestDto = new LotteryRequestDto("000111",80,5);
         Lottery stockLottery = new Lottery(1L,"000111",80,1);
         when(lotteryRepository.findFirstByTicket(any())).thenReturn(stockLottery);
+        Lottery lotterySave = new Lottery(1L,"000111",80,6);
+        when(lotteryRepository.save(any())).thenReturn(lotterySave);
 
         LotteryTicketResponseDto actual = lotteryService.addLottery(lotteryRequestDto);
 

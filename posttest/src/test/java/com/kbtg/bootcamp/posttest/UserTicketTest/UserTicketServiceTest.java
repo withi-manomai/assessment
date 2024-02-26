@@ -41,8 +41,10 @@ public class UserTicketServiceTest {
     void buyTicketStockLotteryNotNullAndExistingUserTicketIsNull() throws Exception {
         Lottery stockLottery = new Lottery(1L,"000111",80,5);
         Lottery lottery = new Lottery(1L,"000111",80,5);
+        Lottery saveLottery = new Lottery(1L,"000111",80,4);
         UserTicket saveUserTicket = new UserTicket(1L,"0000011111","000111",4,lottery);
         when(lotteryRepository.findFirstByTicket(any())).thenReturn(stockLottery);
+        when(lotteryRepository.save(any())).thenReturn(saveLottery);
         when(userTicketRepository.findFirstByUserIdAndTicket(any(),any())).thenReturn(null);
         when(userTicketRepository.save(any())).thenReturn(saveUserTicket);
 
@@ -63,8 +65,10 @@ public class UserTicketServiceTest {
         Lottery stockLottery = new Lottery(1L,"000111",80,5);
         Lottery lottery = new Lottery(1L,"000111",80,5);
         UserTicket existingUserTicket = new UserTicket(1L,"0000011111","000111",1,lottery);
+        Lottery saveLottery = new Lottery(1L,"000111",80,4);
         UserTicket saveUserTicket = new UserTicket(1L,"0000011111","000111",1,lottery);
         when(lotteryRepository.findFirstByTicket(any())).thenReturn(stockLottery);
+        when(lotteryRepository.save(any())).thenReturn(saveLottery);
         when(userTicketRepository.findFirstByUserIdAndTicket(any(),any())).thenReturn(existingUserTicket);
         when(userTicketRepository.save(any())).thenReturn(saveUserTicket);
 
